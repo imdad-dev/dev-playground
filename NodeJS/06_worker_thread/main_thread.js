@@ -1,6 +1,5 @@
-const { Worker } = require("cluster");
 const http = require("http");
-const { worker} = require("worker_threads")
+const { Worker} = require("worker_threads")
 
 
 const PORT =3000;
