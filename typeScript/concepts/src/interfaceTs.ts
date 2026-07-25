@@ -1,114 +1,82 @@
-  // Function Parameter Types
- 
-type ChaiOrder = {
-  type: string;
-  sugar: number;
-  strong: boolean;
+// interface object ka structure provide krta h bss--
+
+interface Chai{
+    flavaour : string;
+    price : number;
+    milk?:boolean
 };
 
-function makeChai(order: ChaiOrder) {
-  console.log(order);
+const masalaChai : Chai = {
+    flavaour : "masala Chai",
+    price:50
+};
+
+// readonly 
+
+interface Shop {
+    readonly id : number;
+      shopName : string;
 }
 
-function serveChai(order: ChaiOrder) {
-  console.log(order);
+const s : Shop = {id :1 , shopName : "ImdadSho Caffe"};
+// s.id=3
+
+
+interface DiscountCalculater{
+        (price : number) : number;
+};
+
+
+const apply50 : DiscountCalculater =(price)=>price * 0.5;
+
+
+interface  TeaMachine{
+    start():void;
+    stop():void;
+};
+
+const machine : TeaMachine ={
+    start(){
+        console.log("start")
+    },
+
+    stop(){ console.log("stop");
+    }
 }
 
-// ======================================
-// Class implements Object Type
-// ======================================
+machine.start();
 
-type TeaRecipe = {
-  water: number;
-  milk: number;
-};
 
-class MakeChai implements TeaRecipe {
-  water = 100;
-  milk = 50;
+// Index signature 
+
+interface ChaiRatings {
+    [ key : string ] : number
 }
 
- 
-// Interface + implements
- 
-interface CupSize {
-  size: "small" | "large";
+const ratings : ChaiRatings ={
+      masala : 4.5,
+       ginger : 4,
 }
 
-class Cup implements CupSize {
-  size: "small" | "large" = "large";
+
+interface User {
+    name : string;
+};
+
+interface User {
+    age : number;
 }
 
-// ======================================
-// Union Type
-// Classes cannot implement union types
-// ======================================
-
-type Response = { ok: true } | { ok: false };
-
-// ❌ Not Allowed
-// class MyResponse implements Response {}
-
- 
-// Literal Union
- 
-
-type TeaType = "masala" | "ginger" | "lemon";
-
-function orderChai(type: TeaType) {
-  console.log(type);
+// merge 
+const user : User ={
+    name : "Imdad", 
+    age: 23
 }
 
-// ======================================
-// Intersection Type (&)
-// Combine multiple object types
-// ======================================
 
-type BaseChai = {
-  teaLeaves: number;
-};
+// extends interface 
 
-type ExtraIngredients = {
-  masala: number;
-};
+interface A { a : string }
+interface B {b : string}
 
-type MasalaChai = BaseChai & ExtraIngredients;
-
-const cup: MasalaChai = {
-  teaLeaves: 563,
-  masala: 2,
-};
-
- 
-// Optional Property (?)
- 
-type User = {
-  username: string;
-  bio?: string;
-};
-
-const user1: User = {
-  username: "Imdad",
-};
-
-const user2: User = {
-  username: "Imdad",
-  bio: "Full Stack Developer",
-};
-
- 
-// Readonly Property
- 
-
-type Config = {
-  readonly appName: string;
-  version: number;
-};
-
-const config: Config = {
-  appName: "Masterji",
-  version: 42,
-};
-
-// ❌ Error
-// config.appName = "imdad.dev";
+interface C extends A , B { }
