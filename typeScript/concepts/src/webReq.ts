@@ -7,7 +7,7 @@ interface Todos {
     completed : boolean;
 }
 
- console.log("it's work")
+
 const url ="https://jsonplaceholder.typicode.com/todos/1";
 
 const fetchData = async (url : string ) => {
