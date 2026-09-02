@@ -1,0 +1,15 @@
+{
+  "name": "llm",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Imdadul",
+  "type": "module",
+  "main": "LLM.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@google/genai": "^2.16.0"
+  }
+}
